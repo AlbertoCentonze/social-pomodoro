@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Button, Fab } from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
+import Timer from "./components/Timer";
+import { socket } from "./services/socket";
 
 function App() {
+  const [timers, setTimers] = useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {timers.map(id => <Timer key= {id} channel= {id}/>)}
+      <Fab
+        color="primary"
+        aria-label="add"
+        onClick={() => {
+          const newTimerId = "timer" + Math.random();
+          socket.emit("addTimer", {
+            id: newTimerId,
+            duration: 1000,
+          });
+          setTimers([...timers, newTimerId]);
+        }}
+      >
+        <AddIcon />
+      </Fab>
     </div>
   );
 }
