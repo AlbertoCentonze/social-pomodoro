@@ -1,0 +1,7 @@
+.TimerContainer {
+  margin: auto;
+  width: 80%;
+  border: 3px solid gray;
+  padding: 10px;
+  display: flex;
+}
