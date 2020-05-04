@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-
 import { Button } from "@material-ui/core";
-import Icon from "@material-ui/core/Icon";
 import RestoreIcon from "@material-ui/icons/Restore";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
@@ -26,12 +24,21 @@ const Timer = (props) => {
       </div>
 
       <div style={styles.buttonContainer}>
-        <Button variant="contained" color="default" startIcon={<RestoreIcon />}>
+        <Button
+          onClick={() => {
+            setTimerState(false)
+            socket.emit(props.channel, {active: timerState, reset: true });
+          }}
+          variant="contained"
+          color="default"
+          startIcon={<RestoreIcon />}
+        >
           RESET
         </Button>
         <Button
           onClick={() => {
             setTimerState(!timerState);
+            socket.emit(props.channel, { active: timerState });
           }}
           variant="contained"
           color={timerState ? "secondary" : "primary"}

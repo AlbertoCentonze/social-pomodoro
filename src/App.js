@@ -1,17 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Fab } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import Timer from "./components/Timer";
 import { socket } from "./services/socket";
+import CreateTimer from "./components/CreateTimer";
 
 function App() {
-  //aggiungi un po' di padding alla div principale pls
   const [timers, setTimers] = useState([]);
   return (
     <div>
       {timers.map((id) => (
         <Timer key={id} channel={id} />
       ))}
+      <CreateTimer
+        roomCreator={(newTimerId) => {
+          socket.emit("addTimer", {
+            id: newTimerId,
+            duration: 1500,
+          });
+          setTimers([...timers, newTimerId]);
+        }}
+      />
       <div className="fab">
         <Fab
           color="primary"

@@ -1,17 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
+import { useInput } from "../hooks/useInput";
 
 const CreateTimer = (props) => {
-  const [room, setRoom] = useState("");
+  const {
+    value: roomCode,
+    bind: bindRoomCode,
+    reset: resetRoomCode,
+  } = useInput("");
   return (
-    <TextField
-      onChange={() => {
-        setRoom();
-      }}
-      id="outlined-basic"
-      label="Outlined"
-      variant="outlined"
-    />
+    <div>
+      <TextField
+        onKeyPress={(press) => {
+          if (press.key === "Enter") {
+            props.roomCreator(roomCode);
+            resetRoomCode();
+          }
+        }}
+        label="Inserisci l'id della stanza"
+        variant="outlined"
+        {...bindRoomCode}
+      />
+      <p>{roomCode}</p>
+    </div>
   );
 };
 
