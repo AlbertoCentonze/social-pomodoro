@@ -3,8 +3,9 @@ import { Button } from "@material-ui/core";
 import RestoreIcon from "@material-ui/icons/Restore";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
-
+import { useTimer } from "../hooks/useTimer";
 import { socket } from "../services/socket.js";
+import Paper from "@material-ui/core/Paper";
 import "./Timer.css";
 
 const Timer = (props) => {
@@ -12,22 +13,26 @@ const Timer = (props) => {
   const [minutes, setMinutes] = useState("");
 
   useEffect(() => {
-    socket.on(props.channel, (data) => {
-      setMinutes(data);
+    socket.on(props.channel, (newTimer) => {
+      setTimerState(newTimer.active);
+      setMinutes(newTimer.duration);
     });
   });
 
   return (
-    <div className="TimerContainer">
-      <div style={styles.textContainer}>
+    <Paper elevation={3} className="TimerContainer">
+      <div>
+        <p>{props.channel}</p>
+      </div>
+      <div>
         <p>{minutes}</p>
       </div>
 
-      <div style={styles.buttonContainer}>
+      <div className="TimerButtonContainer">
         <Button
           onClick={() => {
-            setTimerState(false)
-            socket.emit(props.channel, {active: timerState, reset: true });
+            setTimerState(false);
+            socket.emit(props.channel, { active: false, toReset: true });
           }}
           variant="contained"
           color="default"
@@ -38,7 +43,10 @@ const Timer = (props) => {
         <Button
           onClick={() => {
             setTimerState(!timerState);
-            socket.emit(props.channel, { active: timerState });
+            socket.emit(props.channel, {
+              active: !timerState, // la variabile viene aggiornata solo dopo il rerender, quindi devo mettere !
+              toReset: false,
+            });
           }}
           variant="contained"
           color={timerState ? "secondary" : "primary"}
@@ -47,14 +55,8 @@ const Timer = (props) => {
           {timerState ? "PAUSE" : "START"}
         </Button>
       </div>
-    </div>
+    </Paper>
   );
-};
-
-const styles = {
-  textContainer: {},
-
-  buttonContainer: {},
 };
 
 export default Timer;
