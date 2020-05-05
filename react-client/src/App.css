@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+  margin: auto;
+  padding: 10px;
+  background-image: url(https://wallpaperaccess.com/full/1558939.jpg);
+}

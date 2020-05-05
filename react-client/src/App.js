@@ -4,7 +4,6 @@ import { socket } from "./services/socket";
 import CreateTimer from "./components/CreateTimer";
 import "./App.css";
 
-console.log(sessionStorage.get)
 function App() {
   const [timers, setTimers] = useState([]);
 
