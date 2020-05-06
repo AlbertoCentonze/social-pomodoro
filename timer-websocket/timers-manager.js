@@ -16,8 +16,8 @@ const timers = [];
 let interval;
 
 io.on("connection", (socket) => {
-  socket.setMaxListeners(0);
   console.log("New client connected");
+  socket.join("clocks")
   if (interval) {
     clearInterval(interval);
   }
@@ -34,7 +34,7 @@ io.on("connection", (socket) => {
         timer.toReset = false;
         timer.duration = 1500;
       }
-      socket.emit(timer.id, timer);
+      socket.to("clocks").emit(timer.id, timer);
     });
   }, 1000);
   socket.on("addTimer", (data) => {
@@ -43,12 +43,10 @@ io.on("connection", (socket) => {
       if (timers[i].id === data.id) {
         console.log("New user connected to timer" + data.id);
         isNew = false;
-        socket.emit(data.id + "-answer", "connect");
         break;
       }
     if (isNew) {
       console.log("New timer added");
-      socket.emit(data.id + "-answer", "new");
       timers.push({
         id: data.id,
         duration: data.duration,
