@@ -1,29 +1,34 @@
 const express = require("express");
-const http = require("http");
-const socketIo = require("socket.io");
-
-const port = process.env.PORT || 4001;
-const index = require("./routes/index");
-
 const app = express();
-app.use(index);
+const socketio = require("socket.io");
 
-const server = http.createServer(app);
+app.use(express.static(__dirname + "/public"));
 
-const io = socketIo(server);
+const expresServer = app.listen(9000);
+const io = socketio(expresServer);
 
 const timers = [];
 let interval;
 
 io.on("connection", (socket) => {
   console.log("New client connected");
-  socket.join("clocks")
+  socket.join("clocks");
   if (interval) {
     clearInterval(interval);
   }
-  interval = setInterval(() => {
-    console.log(timers);
-    timers.forEach((timer) => {
+  interval = TimersHandler(socket, timers)
+  newTimerHandler(socket, timers);
+
+  socket.on("disconnect", () => {
+    console.log("Client disconnected");
+    clearInterval(interval);
+  });
+});
+
+const TimersHandler = (socket, timersList) => {
+  return setInterval(() => {
+    console.log(timersList);
+    timersList.forEach((timer) => {
       socket.on(timer.id, (newTimerState) => {
         timer.active = newTimerState.active;
         timer.toReset = newTimerState.toReset;
@@ -37,17 +42,20 @@ io.on("connection", (socket) => {
       socket.to("clocks").emit(timer.id, timer);
     });
   }, 1000);
+};
+
+const newTimerHandler = (socket, timersList) => {
   socket.on("addTimer", (data) => {
     let isNew = true;
-    for (let i = 0; i < timers.length; i++)
-      if (timers[i].id === data.id) {
-        console.log("New user connected to timer" + data.id);
+    for (let i = 0; i < timersList.length; i++)
+      if (timersList[i].id === data.id) {
+        console.log("New user connected to timer " + data.id);
         isNew = false;
         break;
       }
     if (isNew) {
       console.log("New timer added");
-      timers.push({
+      timersList.push({
         id: data.id,
         duration: data.duration,
         active: false,
@@ -55,10 +63,4 @@ io.on("connection", (socket) => {
       });
     }
   });
-  socket.on("disconnect", () => {
-    console.log("Client disconnected");
-    clearInterval(interval);
-  });
-});
-
-server.listen(port, () => console.log(`Listening on port ${port}`));
+};
