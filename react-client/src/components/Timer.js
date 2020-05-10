@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 import RestoreIcon from "@material-ui/icons/Restore";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
@@ -20,11 +21,11 @@ const Timer = (props) => {
 
   return (
     <Paper elevation={3} className="TimerContainer">
-      <div className="ModeSelectorContainer">
-        <Button>Tomato</Button>
+      <ButtonGroup variant="contained" color="primary">
+        <Button>Pomodoro</Button>
         <Button>Short Break</Button>
         <Button>Long Break</Button>
-      </div>
+      </ButtonGroup>
       <div>
         <p>{props.channel}</p>
       </div>

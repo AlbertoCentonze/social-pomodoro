@@ -37,7 +37,7 @@ const TimersHandler = (socket, timersList) => {
         timer.duration -= 1;
       } else if (timer.toReset) {
         timer.toReset = false;
-        timer.duration = 1500;
+        timer.duration = timer.duration;
       }
       io.of("/").to("clocks").emit(timer.id, timer);
     });
