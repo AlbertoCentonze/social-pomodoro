@@ -5,13 +5,26 @@ export const useTimer = (rawTime) => {
   const [minutes, setMinutes] = useState(Math.floor(rawTime / 60));
   const [active, setActive] = useState(false);
 
-  return {
+  return [
     seconds,
     minutes,
-    setTime: rawTime => {
-      setMinutes(Math.floor(rawTime / 60));
-      setSeconds(Math.floor(rawTime % 60))},
+    (rawTime) => {
+      setMinutes(() => {
+        let minutes = Math.floor(rawTime / 60);
+        if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
+        return minutes;
+      });
+      setSeconds(() => {
+        let seconds = Math.floor(rawTime % 60);
+        if (seconds < 10) {
+          seconds = "0" + seconds;
+        }
+        return seconds;
+      });
+    },
     active,
     setActive,
-  };
+  ];
 };

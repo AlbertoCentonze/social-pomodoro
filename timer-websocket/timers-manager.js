@@ -11,12 +11,12 @@ const timers = [];
 let interval;
 
 io.on("connection", (socket) => {
+  socket.join("clocks")
   console.log("New client connected");
-  socket.join("clocks");
   if (interval) {
     clearInterval(interval);
   }
-  interval = TimersHandler(socket, timers)
+  interval = TimersHandler(socket, timers);
   newTimerHandler(socket, timers);
 
   socket.on("disconnect", () => {
@@ -39,7 +39,7 @@ const TimersHandler = (socket, timersList) => {
         timer.toReset = false;
         timer.duration = 1500;
       }
-      socket.to("clocks").emit(timer.id, timer);
+      io.of("/").to("clocks").emit(timer.id, timer);
     });
   }, 1000);
 };

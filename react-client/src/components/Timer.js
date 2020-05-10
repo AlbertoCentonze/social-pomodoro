@@ -9,30 +9,33 @@ import Paper from "@material-ui/core/Paper";
 import "./Timer.css";
 
 const Timer = (props) => {
-  const [timerState, setTimerState] = useState(false);
-  const [minutes, setMinutes] = useState("");
+  const [seconds, minutes, setTime, active, setActive] = useTimer(1500);
 
   useEffect(() => {
     socket.on(props.channel, (newTimer) => {
-      //console.log(newTimer)
-      setTimerState(newTimer.active);
-      setMinutes(newTimer.duration);
+      setActive(newTimer.active);
+      setTime(newTimer.duration);
     });
   });
 
   return (
     <Paper elevation={3} className="TimerContainer">
+      <div className="ModeSelectorContainer">
+        <Button>Tomato</Button>
+        <Button>Short Break</Button>
+        <Button>Long Break</Button>
+      </div>
       <div>
         <p>{props.channel}</p>
       </div>
       <div>
-        <p>{minutes}</p>
+        <p>{minutes + ":" + seconds}</p>
       </div>
 
       <div className="TimerButtonContainer">
         <Button
           onClick={() => {
-            setTimerState(false);
+            setActive(false);
             socket.emit(props.channel, { active: false, toReset: true });
           }}
           variant="contained"
@@ -43,17 +46,17 @@ const Timer = (props) => {
         </Button>
         <Button
           onClick={() => {
-            setTimerState(!timerState);
+            setActive(!active);
             socket.emit(props.channel, {
-              active: !timerState, // la variabile viene aggiornata solo dopo il rerender, quindi devo mettere !
+              active: !active, // la variabile viene aggiornata solo dopo il rerender, quindi devo mettere !
               toReset: false,
             });
           }}
           variant="contained"
-          color={timerState ? "secondary" : "primary"}
-          endIcon={timerState ? <PauseIcon /> : <PlayArrowIcon />}
+          color={active ? "secondary" : "primary"}
+          endIcon={active ? <PauseIcon /> : <PlayArrowIcon />}
         >
-          {timerState ? "PAUSE" : "START"}
+          {active ? "PAUSE" : "START"}
         </Button>
       </div>
     </Paper>

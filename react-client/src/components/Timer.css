@@ -1,13 +1,14 @@
 .TimerContainer {
   margin: 10px;
-  width:50%;
+  width: 50%;
   padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.TimerButtonsContainer{
+.TimerButtonsContainer {
+  display: flex;
   margin: auto;
   padding: 10px;
   width: 100%;
