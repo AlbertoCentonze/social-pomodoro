@@ -4,13 +4,29 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import RestoreIcon from "@material-ui/icons/Restore";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
-import { useTimer } from "../hooks/useTimer";
+import { usePomodoro } from "../hooks/usePomodoro";
 import { socket } from "../services/socket.js";
 import Paper from "@material-ui/core/Paper";
 import "./Timer.css";
 
 const Timer = (props) => {
-  const [seconds, minutes, setTime, active, setActive] = useTimer(1500);
+  const [seconds, minutes, setTime, active, setActive, timerMode] = usePomodoro(
+    1500
+  );
+
+  const resetHandler = () => {
+    setActive(false);
+    socket.emit(props.channel, {
+      active: false,
+      toReset: true,
+      mode: timerMode.current,
+    });
+  };
+
+  const modeHandler = (mode) => {
+    timerMode.current = mode;
+    socket.emit(props.channel, { mode: timerMode.current });
+  };
 
   useEffect(() => {
     socket.on(props.channel, (newTimer) => {
@@ -22,12 +38,33 @@ const Timer = (props) => {
   return (
     <Paper elevation={3} className="TimerContainer">
       <ButtonGroup variant="contained" color="primary">
-        <Button>Pomodoro</Button>
-        <Button>Short Break</Button>
-        <Button>Long Break</Button>
+        <Button
+          onClick={() => {
+            modeHandler("pomodoro");
+            resetHandler();
+          }}
+        >
+          Pomodoro
+        </Button>
+        <Button
+          onClick={() => {
+            modeHandler("shortBreak");
+            resetHandler();
+          }}
+        >
+          Short Break
+        </Button>
+        <Button
+          onClick={() => {
+            modeHandler("longBreak");
+            resetHandler();
+          }}
+        >
+          Long Break
+        </Button>
       </ButtonGroup>
       <div>
-        <p>{props.channel}</p>
+        <p className="time">{props.channel}</p>
       </div>
       <div>
         <p>{minutes + ":" + seconds}</p>
@@ -37,7 +74,11 @@ const Timer = (props) => {
         <Button
           onClick={() => {
             setActive(false);
-            socket.emit(props.channel, { active: false, toReset: true });
+            socket.emit(props.channel, {
+              active: false,
+              toReset: true,
+              mode: timerMode.current,
+            });
           }}
           variant="contained"
           color="default"

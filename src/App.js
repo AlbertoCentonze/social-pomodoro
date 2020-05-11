@@ -4,6 +4,8 @@ import { socket } from "./services/socket";
 import CreateTimer from "./components/CreateTimer";
 import "./App.css";
 
+//react device detect
+
 function App() {
   const [timers, setTimers] = useState([]);
 
@@ -19,6 +21,7 @@ function App() {
             duration: 1500,
             active: false,
             toReset: false,
+            mode: "pomodoro",
           });
           setTimers([...timers, newTimerId]);
         }}

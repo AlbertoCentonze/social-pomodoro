@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
-export const useTimer = (rawTime) => {
+export const usePomodoro = (rawTime) => {
   const [seconds, setSeconds] = useState(Math.floor(rawTime % 60));
   const [minutes, setMinutes] = useState(Math.floor(rawTime / 60));
   const [active, setActive] = useState(false);
+  const mode = useRef("pomodoro");
 
   return [
     seconds,
@@ -26,5 +27,6 @@ export const useTimer = (rawTime) => {
     },
     active,
     setActive,
+    mode,
   ];
 };
