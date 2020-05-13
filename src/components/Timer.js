@@ -44,7 +44,7 @@ const Timer = (props) => {
             resetHandler();
           }}
         >
-          Pomodoro
+          pomo
         </Button>
         <Button
           onClick={() => {
@@ -66,8 +66,8 @@ const Timer = (props) => {
       <div>
         <p className="time">{props.channel}</p>
       </div>
-      <div>
-        <p>{minutes + ":" + seconds}</p>
+      <div className="timeTextContainer">
+        <p className="timeText">{minutes + ":" + seconds}</p>
       </div>
 
       <div className="TimerButtonContainer">

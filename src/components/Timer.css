@@ -1,6 +1,6 @@
 .TimerContainer {
   margin: 10px;
-  width: 50%;
+  width: auto;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,12 @@
   justify-content: space-evenly;
 }
 
-.timer {
-  font-size: large;
+.timeText{
   font-weight: bold;
+  font-size: 200%;
+}
+
+
+.timeTextContainer{
+  height: 10%;
 }
