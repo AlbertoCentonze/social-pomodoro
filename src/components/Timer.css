@@ -1,21 +1,27 @@
 .TimerContainer {
-  margin: 10px;
-  width: auto;
-  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px;
+  width: 95%;
+  margin-top: 10px;
 }
 
-.TimerButtonsContainer {
+.timerButtonsContainer {
   display: flex;
-  margin: auto;
+  flex-direction: row;
   padding: 10px;
-  width: 100%;
-  justify-content: space-evenly;
 }
 
 .timeText{
+  margin-top: 3px;
+  margin-bottom: 5%;
   font-weight: bold;
+  font-size: 200%;
+}
+
+.roomText{
+  margin-top: 3px;
+  margin-bottom: 5%;
   font-size: 200%;
 }

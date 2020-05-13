@@ -1,0 +1,22 @@
+.paperContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 95%;
+  margin-top: 10px;
+}
+
+.title {
+  margin-top: 2%;
+  margin-bottom: 6px;
+  width: 100%;
+  font-weight: bold;
+  text-align: center;
+}
+
+.description {
+  margin-top: 0px;
+  margin-bottom: 2%;
+  width: 100%;
+  text-align: center;
+}

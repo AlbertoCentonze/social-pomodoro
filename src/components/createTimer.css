@@ -1,6 +1,7 @@
 .paperContainer {
+  display: flex;
   padding: 10px;
-  width: auto;
+  width: 95%;
   margin-top: 10px;
 }
 .textField {

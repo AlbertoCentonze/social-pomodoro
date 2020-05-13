@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button } from "@material-ui/core";
+import { Button, Container } from "@material-ui/core";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import RestoreIcon from "@material-ui/icons/Restore";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
@@ -44,7 +44,7 @@ const Timer = (props) => {
             resetHandler();
           }}
         >
-          pomo
+          pomodoro
         </Button>
         <Button
           onClick={() => {
@@ -63,14 +63,9 @@ const Timer = (props) => {
           Long Break
         </Button>
       </ButtonGroup>
-      <div>
-        <p className="time">{props.channel}</p>
-      </div>
-      <div className="timeTextContainer">
-        <p className="timeText">{minutes + ":" + seconds}</p>
-      </div>
-
-      <div className="TimerButtonContainer">
+      <p className="roomText">{"ID stanza: " + props.channel}</p>
+      <p className="timeText">{minutes + ":" + seconds}</p>
+      <Container className="timerButtonsContainer">
         <Button
           onClick={() => {
             setActive(false);
@@ -100,7 +95,7 @@ const Timer = (props) => {
         >
           {active ? "PAUSE" : "START"}
         </Button>
-      </div>
+      </Container>
     </Paper>
   );
 };

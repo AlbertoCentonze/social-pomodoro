@@ -11,7 +11,7 @@ const CreateTimer = (props) => {
     reset: resetRoomCode,
   } = useInput("");
   return (
-    <Paper className="paperContainer">
+    <Paper elevation={3} className="paperContainer">
       <TextField
         className="textField"
         onKeyPress={(press) => {
