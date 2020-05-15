@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
-import { Button, Container, Grid } from "@material-ui/core";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
+import { Button, Grid, ButtonGroup, Paper } from "@material-ui/core";
 import RestoreIcon from "@material-ui/icons/Restore";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
 import { usePomodoro } from "../hooks/usePomodoro";
 import { socket } from "../services/socket.js";
-import Paper from "@material-ui/core/Paper";
 import "./Timer.css";
 
 const Timer = (props) => {

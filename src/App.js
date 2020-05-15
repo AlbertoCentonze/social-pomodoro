@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Timer from "./components/Timer";
+import Header from "./components/Header";
 import { socket } from "./services/socket";
 import CreateTimer from "./components/CreateTimer";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
+import { Container, Grid } from "@material-ui/core";
 import FlexiblePaperCard from "./components/FlexiblePaperCard";
 import "./App.css";
 
@@ -23,6 +23,7 @@ function App() {
         justify="flex-start"
         alignItems="center"
       >
+        <Header />
         {timer === undefined ? (
           <FlexiblePaperCard
             title="Benvenuto sul timer più figo del mondo"

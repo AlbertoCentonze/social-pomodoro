@@ -1,0 +1,22 @@
+.gridContainer {
+  padding: 10px;
+}
+
+.logoAndTitle {
+  display: flex;
+  flex-direction: row;
+}
+
+.appIcon {
+  color: white;
+  margin-right: 10px;
+}
+
+.settingsIcon {
+  color: white;
+}
+
+.appTitle {
+  color: white;
+  width: fit-content;
+}
