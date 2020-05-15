@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, Container } from "@material-ui/core";
+import { Button, Container, Grid } from "@material-ui/core";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import RestoreIcon from "@material-ui/icons/Restore";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
@@ -65,7 +65,12 @@ const Timer = (props) => {
       </ButtonGroup>
       <p className="roomText">{"ID stanza: " + props.channel}</p>
       <p className="timeText">{minutes + ":" + seconds}</p>
-      <Container className="timerButtonsContainer">
+      <Grid
+        container
+        direction="row"
+        justify="space-evenly"
+        alignItems="center"
+      >
         <Button
           onClick={() => {
             setActive(false);
@@ -95,7 +100,7 @@ const Timer = (props) => {
         >
           {active ? "PAUSE" : "START"}
         </Button>
-      </Container>
+      </Grid>
     </Paper>
   );
 };

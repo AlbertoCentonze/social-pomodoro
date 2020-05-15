@@ -46,15 +46,15 @@ function App() {
         />
         <FlexiblePaperCard
           title="Ultime novità"
-          description="Sto testando una correzzione per il sistema del timer, non dovrebbe più bloccarsi ma non ho ancora avuto modo di testarlo. Se si blocca fammi sapere. Inoltre se il sito non riesce a connettersi al server con tutti i timer non ti darà la possibilità di inserire l'id. In quel caso si tratta di un problema tecnico che non dipende da te"
+          description="Sto testando una correzzione per il sistema del timer, non dovrebbe più bloccarsi ma se dovesse accadere ancora ti prego di farmelo sapere."
         />
         <FlexiblePaperCard
-          title="Informazioni di servizio"
-          description="1. Purtroppo non è ancora disponibile un layout ottimizzato per i browser PC, ti invito ad utilizzare il cellulare finché non avrò risolto 2. Il timer potrebbe bloccarsi da solo, è normale e sto lavorando per correggerlo. Se si blocca ancora segnalamelo 3. Non sto riuscendo a centrare i bottoni start e reset, da fastidio anche a me tranquillo"
+          title="Problemi noti"
+          description="1. Purtroppo non è ancora disponibile un layout ottimizzato per i browser PC, ti invito ad utilizzare il cellulare finché non avrò risolto"
         />
         <FlexiblePaperCard
           title="Vuoi collaborare?"
-          description="Visita la mia repository su github per avere maggiori informazioni! AlbertoCentonze/social-pomodoro"
+          description="Visita la mia repository su Github per avere maggiori informazioni! AlbertoCentonze/social-pomodoro"
         />
       </Grid>
     </Container>
