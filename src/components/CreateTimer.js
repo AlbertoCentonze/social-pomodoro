@@ -1,5 +1,5 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
+import { TextField } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import "./createTimer.css";
 import { useInput } from "../hooks/useInput";
@@ -10,12 +10,13 @@ const CreateTimer = (props) => {
     bind: bindRoomCode,
     reset: resetRoomCode,
   } = useInput("");
+
   return (
     <Paper elevation={3} className="paperContainer">
       <TextField
         className="textField"
         onKeyPress={(press) => {
-          if (press.key === "Enter") {
+          if (press.key === "Enter" && props.connected) {
             props.roomCreator(roomCode);
             resetRoomCode();
           }
@@ -23,6 +24,7 @@ const CreateTimer = (props) => {
         label="Inserisci l'id della stanza"
         {...bindRoomCode}
       />
+      {/*TODO <CircularProgress />*/}
     </Paper>
   );
 };

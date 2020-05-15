@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Timer from "./components/Timer";
 import { socket } from "./services/socket";
 import CreateTimer from "./components/CreateTimer";
@@ -9,6 +9,11 @@ import "./App.css";
 
 function App() {
   const [timer, setTimer] = useState();
+  const [connected, setConnected] = useState(false);
+
+  useEffect(() => {
+    socket.on("connection", (data) => setConnected(data));
+  });
 
   return (
     <Container className="container">
@@ -27,6 +32,7 @@ function App() {
           <Timer channel={timer} />
         )}
         <CreateTimer
+          connected={connected}
           roomCreator={(newTimerId) => {
             socket.emit("addTimer", {
               id: newTimerId,
@@ -38,8 +44,18 @@ function App() {
             setTimer(newTimerId);
           }}
         />
-        <FlexiblePaperCard title="Informazioni di servizio" description="1. Purtroppo non è ancora disponibile un layout ottimizzato per i browser PC, ti invito ad utilizzare il cellulare finché non avrò risolto 2. Il timer potrebbe bloccarsi da solo, è normale e sto lavorando per correggerlo. Se si blocca ancora segnalamelo 3. Non sto riuscendo a centrare i bottoni start e reset, da fastidio anche a me tranquillo" />
-        <FlexiblePaperCard title="Vuoi collaborare?" description="Visita la mia repository su github per avere maggiori informazioni! AlbertoCentonze/social-pomodoro" />
+        <FlexiblePaperCard
+          title="Ultime novità"
+          description="Sto testando una correzzione per il sistema del timer, non dovrebbe più bloccarsi ma non ho ancora avuto modo di testarlo. Se si blocca fammi sapere. Inoltre se il sito non riesce a connettersi al server con tutti i timer non ti darà la possibilità di inserire l'id. In quel caso si tratta di un problema tecnico che non dipende da te"
+        />
+        <FlexiblePaperCard
+          title="Informazioni di servizio"
+          description="1. Purtroppo non è ancora disponibile un layout ottimizzato per i browser PC, ti invito ad utilizzare il cellulare finché non avrò risolto 2. Il timer potrebbe bloccarsi da solo, è normale e sto lavorando per correggerlo. Se si blocca ancora segnalamelo 3. Non sto riuscendo a centrare i bottoni start e reset, da fastidio anche a me tranquillo"
+        />
+        <FlexiblePaperCard
+          title="Vuoi collaborare?"
+          description="Visita la mia repository su github per avere maggiori informazioni! AlbertoCentonze/social-pomodoro"
+        />
       </Grid>
     </Container>
   );
