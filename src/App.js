@@ -47,7 +47,7 @@ function App() {
         />
         <FlexiblePaperCard
           title="Ultime novità"
-          description="Sto testando una correzzione per il sistema del timer, non dovrebbe più bloccarsi ma se dovesse accadere ancora ti prego di farmelo sapere."
+          description="Sto testando una correzione per il sistema del timer, non dovrebbe più bloccarsi ma se dovesse accadere ancora ti prego di farmelo sapere."
         />
         <FlexiblePaperCard
           title="Problemi noti"
