@@ -5,6 +5,7 @@ import { socket } from "./services/socket";
 import CreateTimer from "./components/CreateTimer";
 import { Container, Grid } from "@material-ui/core";
 import FlexiblePaperCard from "./components/FlexiblePaperCard";
+import { setRecentCodes, getRecentCodes } from "./services/recentCodes";
 import "./App.css";
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
         {timer === undefined ? (
           <FlexiblePaperCard
             title="Benvenuto sul timer più figo del mondo"
-            description="Questo timer ti permette di studiare sfruttando i cicli di studio. Connettiti ad un timer utilizzando un ID che puoi scegliere a piacere e studia con i tuoi amici condividendolo"
+            description="Questo timer ti permette di studiare sfruttando i cicli di studio. Connettiti ad un timer utilizzando un codice a tuo piacimento e studia con i tuoi amici condividendolo"
           />
         ) : (
           <Timer channel={timer} />
@@ -35,14 +36,17 @@ function App() {
         <CreateTimer
           connected={connected}
           roomCreator={(newTimerId) => {
+            let timerId = newTimerId.toUpperCase();
             socket.emit("addTimer", {
-              id: newTimerId,
+              id: timerId,
               duration: 1500,
               active: false,
               toReset: false,
               mode: "pomodoro",
             });
-            setTimer(newTimerId);
+            setRecentCodes(timerId);
+            console.log(getRecentCodes());
+            setTimer(timerId);
           }}
         />
         <FlexiblePaperCard

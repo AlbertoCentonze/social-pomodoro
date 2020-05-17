@@ -21,7 +21,7 @@ const CreateTimer = (props) => {
             resetRoomCode();
           }
         }}
-        label="Inserisci l'id della stanza"
+        label="Inserisci il codice della stanza"
         {...bindRoomCode}
       />
       {/*TODO <CircularProgress />*/}
