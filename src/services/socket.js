@@ -1,3 +1,5 @@
 import socketIOClient from "socket.io-client";
-
-export const socket = socketIOClient("https://pomo-server.herokuapp.com/");
+const test = true
+export const socket = socketIOClient(
+  test ? "localhost:5000" : "https://pomo-server.herokuapp.com/"
+);
