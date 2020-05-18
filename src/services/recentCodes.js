@@ -7,11 +7,17 @@ export const setRecentCodes = (newCode) => {
     localStorage.setItem("recent-codes", "");
     return;
   }
-  localStorage.setItem("recent-codes", newCode + " " + previousCodes);
+  localStorage.setItem("recent-codes", newCode + "-" + previousCodes);
 };
 
 export const getRecentCodes = () => {
-  return localStorage.getItem("recent-codes").split(" ");
+  if (localStorage.getItem("recent-codes") === null) {
+    localStorage.setItem("recent-codes", "");
+  }
+  return localStorage
+    .getItem("recent-codes")
+    .split("-")
+    .filter((item) => item !== "");
 };
 
 export const resetRecentCodes = () => {

@@ -1,18 +1,11 @@
 .container {
-  background-image: url(./images/testWallpaper.jpg);
-  position: fixed;
-  width: 100%;
+  background-image: url(./images/fed1.png);
   height: 100%;
-  left: 0;
-  top: 0;
-  z-index: 10;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-.timerContainer {
-  justify-content: center;
-  min-width: 550px;
-  max-width: 90%;
-  margin: 20px auto;
+  width: 100%;
+  background-color: #cccccc;
+  background-position: center;
+  background-repeat: repeat;
+  background-size: contain;
+  margin: 0px;
+  padding: 10px;
 }

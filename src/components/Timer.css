@@ -4,23 +4,25 @@
   align-items: center;
   padding: 10px;
   width: 95%;
-  margin-top: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .timerButtonsContainer {
   display: flex;
   flex-direction: row;
   padding: 10px;
+  position: relative;
 }
 
-.timeText{
+.timeText {
   margin-top: 3px;
   margin-bottom: 5%;
   font-weight: bold;
   font-size: 200%;
 }
 
-.roomText{
+.roomText {
   margin-top: 3px;
   margin-bottom: 5%;
   font-size: 200%;
