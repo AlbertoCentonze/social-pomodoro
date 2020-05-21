@@ -7,7 +7,14 @@ export const setRecentCodes = (newCode) => {
     localStorage.setItem("recent-codes", "");
     return;
   }
-  localStorage.setItem("recent-codes", newCode + "-" + previousCodes);
+  const previousArray = getRecentCodes();
+  if (previousArray.includes(newCode)) {
+    // TODO expolit arrayMove()
+    arrayMove(previousArray, previousArray.indexOf(newCode), 0);
+    localStorage.setItem("recent-codes", arrayToString(previousArray));
+  } else {
+    localStorage.setItem("recent-codes", newCode + "-" + previousCodes);
+  }
 };
 
 export const getRecentCodes = () => {
@@ -23,3 +30,15 @@ export const getRecentCodes = () => {
 export const resetRecentCodes = () => {
   localStorage.setItem("recent-codes", "");
 };
+
+function arrayMove(arr, fromIndex, toIndex) {
+  var element = arr[fromIndex];
+  arr.splice(fromIndex, 1);
+  arr.splice(toIndex, 0, element);
+}
+
+function arrayToString(arr) {
+  let string = "";
+  arr.forEach((code) => {string += code + "-"});
+  return string
+}

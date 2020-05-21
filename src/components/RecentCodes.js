@@ -8,7 +8,7 @@ const RecentCodes = (props) => {
     <Paper className="paperContainer">
       <Button onClick={resetRecentCodes}>Clear recents</Button>
       {getRecentCodes().map((code) => {
-        return <Button>{code}</Button>;
+        return <Button onClick={() => props.onRecentClick(code)}>{code}</Button>;
       })}
     </Paper>
   );

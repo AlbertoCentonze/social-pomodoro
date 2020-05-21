@@ -14,8 +14,15 @@ function App() {
   const [timer, setTimer] = useState();
   const [connected, setConnected] = useState(false);
 
+  const newTimerHandler = (newTimerId) => {
+    let timerId = newTimerId.toUpperCase();
+    socket.emit("addTimer", timerId);
+    setRecentCodes(timerId);
+    setTimer(timerId);
+  };
+
   useEffect(() => {
-    socket.on("connection", (data) => setConnected(data));
+    socket.on("connection", (data) => setConnected(() => data)); //TODO do I really need this?
   });
 
   const mobile = (
@@ -35,22 +42,8 @@ function App() {
       ) : (
         <Timer channel={timer} />
       )}
-      <RecentCodes />
-      <CreateTimer
-        connected={connected}
-        roomCreator={(newTimerId) => {
-          let timerId = newTimerId.toUpperCase();
-          socket.emit("addTimer", {
-            id: timerId,
-            duration: 1500,
-            active: false,
-            toReset: false,
-            mode: "pomodoro",
-          });
-          setRecentCodes(timerId);
-          setTimer(timerId);
-        }}
-      />
+      <RecentCodes onRecentClick={newTimerHandler} />
+      <CreateTimer connected={connected} roomCreator={newTimerHandler} />
       <FlexiblePaperCard
         title="Ultime novità"
         description="Sto testando una correzione per il sistema del timer, non dovrebbe più bloccarsi ma se dovesse accadere ancora ti prego di farmelo sapere."
