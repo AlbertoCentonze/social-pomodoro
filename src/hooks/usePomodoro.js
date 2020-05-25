@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 
 export const usePomodoro = (rawTime) => {
-  const [seconds, setSeconds] = useState(Math.floor(rawTime % 60));
+  const [seconds, setSeconds] = useState(Math.floor(rawTime % 60) + "0");
   const [minutes, setMinutes] = useState(Math.floor(rawTime / 60));
   const [active, setActive] = useState(false);
   const mode = useRef("pomodoro");

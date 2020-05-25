@@ -15,8 +15,8 @@ function App() {
   const [connected, setConnected] = useState(false);
 
   const newTimerHandler = (newTimerId) => {
-    let timerId = newTimerId.toUpperCase();
-    socket.emit("addTimer", timerId);
+    const timerId = newTimerId.toUpperCase();
+    socket.emit("addTimer", "ciao");
     setRecentCodes(timerId);
     setTimer(timerId);
   };
@@ -46,11 +46,11 @@ function App() {
       <CreateTimer connected={connected} roomCreator={newTimerHandler} />
       <FlexiblePaperCard
         title="Ultime novità"
-        description="Sto testando una correzione per il sistema del timer, non dovrebbe più bloccarsi ma se dovesse accadere ancora ti prego di farmelo sapere."
+        description="Nuova correzione per il timer in fase di testing, aggiunto anche un primo supporto ai timer recenti"
       />
       <FlexiblePaperCard
         title="Problemi noti"
-        description="1. Purtroppo non è ancora disponibile un layout ottimizzato per i browser PC, ti invito ad utilizzare il cellulare finché non avrò risolto"
+        description="Purtroppo non è ancora disponibile un layout ottimizzato per i browser PC, ti invito ad utilizzare il cellulare finché non avrò risolto"
       />
       <FlexiblePaperCard
         title="Vuoi collaborare?"

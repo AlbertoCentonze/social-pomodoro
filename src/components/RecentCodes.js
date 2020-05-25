@@ -6,7 +6,7 @@ import "./FlexiblePaperCard.css";
 const RecentCodes = (props) => {
   return (
     <Paper className="paperContainer">
-      <Button onClick={resetRecentCodes}>Clear recents</Button>
+      <Button onClick={resetRecentCodes}>elimina recenti (ricarica per pulire)</Button>
       {getRecentCodes().map((code) => {
         return <Button onClick={() => props.onRecentClick(code)}>{code}</Button>;
       })}
