@@ -20,14 +20,15 @@ function App() {
     setRecentCodes(timerId);
     setTimer(timerId);
   };
-  
+
   //TODO DELETE THE PREVIOUS TIMER
 
   useEffect(() => {
     socket.on("connection", (data) => setConnected(() => data)); //TODO do I really need this?
   });
 
-  const mobile = (
+  //const mobile = (
+  return (
     <Grid
       className="container"
       container
@@ -61,7 +62,7 @@ function App() {
     </Grid>
   );
 
-  const desktop = (
+  /*const desktop = (
     <Container className="container">
       <p>funonzia</p>
     </Container>
@@ -71,7 +72,7 @@ function App() {
     return mobile;
   } else {
     return desktop;
-  }
+  }*/
 }
 
 export default App;
