@@ -15,11 +15,13 @@ function App() {
   const [connected, setConnected] = useState(false);
 
   const newTimerHandler = (newTimerId) => {
-    const timerId = newTimerId.toUpperCase();
-    socket.emit("addTimer", "ciao");
+    let timerId = newTimerId.toUpperCase();
+    socket.emit("addTimer", { id: timerId });
     setRecentCodes(timerId);
     setTimer(timerId);
   };
+  
+  //TODO DELETE THE PREVIOUS TIMER
 
   useEffect(() => {
     socket.on("connection", (data) => setConnected(() => data)); //TODO do I really need this?
