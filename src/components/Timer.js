@@ -27,9 +27,11 @@ const Timer = (props) => {
   };
 
   useEffect(() => {
-    socket.on(props.channel, ({active, duration}) => {
-      console.log(active)
-      console.log(duration)
+    if (minutes === "00" && seconds === "00") {
+      socket.close();
+      socket.connect();
+    }
+    socket.on(props.channel, ({ active, duration }) => {
       setActive(active);
       setTime(duration);
     });

@@ -3,12 +3,11 @@ import Timer from "./components/Timer";
 import Header from "./components/Header";
 import { socket } from "./services/socket";
 import CreateTimer from "./components/CreateTimer";
-import { Container, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import FlexiblePaperCard from "./components/FlexiblePaperCard";
 import { setRecentCodes } from "./services/recentCodes";
 import "./App.css";
 import RecentCodes from "./components/RecentCodes";
-import { isMobile } from "react-device-detect";
 
 function App() {
   const [timer, setTimer] = useState();
@@ -21,10 +20,10 @@ function App() {
     setTimer(timerId);
   };
 
-  //TODO DELETE THE PREVIOUS TIMER
+  //TODO DELETE THE PREVIOUS TIMER? check the hook
 
   useEffect(() => {
-    socket.on("connection", (data) => setConnected(() => data)); //TODO do I really need this?
+    socket.on("connection", (data) => setConnected(data)); 
   });
 
   //const mobile = (
@@ -61,18 +60,6 @@ function App() {
       />
     </Grid>
   );
-
-  /*const desktop = (
-    <Container className="container">
-      <p>funonzia</p>
-    </Container>
-  );
-
-  if (isMobile) {
-    return mobile;
-  } else {
-    return desktop;
-  }*/
 }
 
 export default App;
