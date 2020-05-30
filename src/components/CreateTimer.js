@@ -21,7 +21,9 @@ const CreateTimer = (props) => {
             resetRoomCode();
           }
         }}
+        id="outlined-textarea"
         label="Inserisci il codice della stanza"
+        placeholder="Ad esempio: ompito di latino"
         {...bindRoomCode}
       />
       {/*TODO <CircularProgress />*/}
