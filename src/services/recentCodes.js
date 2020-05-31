@@ -29,6 +29,7 @@ export const getRecentCodes = () => {
 
 export const resetRecentCodes = () => {
   localStorage.setItem("recent-codes", "");
+  window.location.reload(); //TODO find a better soluttion
 };
 
 export const setReloadCode = (code) => {

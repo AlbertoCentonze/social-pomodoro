@@ -17,7 +17,7 @@ function App() {
 
   const newTimerHandler = (newTimerId) => {
     socket.off(timer);
-    let timerId = newTimerId.toUpperCase();
+    let timerId = newTimerId.toLowerCase();
     socket.emit("addTimer", { id: timerId });
     setRecentCodes(timerId);
     setTimer(timerId);
@@ -30,7 +30,7 @@ function App() {
   //const mobile = (
   return (
     <div className="main-div">
-      <TimerModal open={modal} />
+      <TimerModal className="modal" open={modal} />
       {/* TODO add description, explaination and style it */}
       <Header className="header" />
       <div className="data-div">
