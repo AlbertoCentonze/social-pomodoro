@@ -1,11 +1,114 @@
-.container {
-  background-image: url(./images/testWallpaper.jpg);
-  height: 100%;
-  width: 100%;
-  background-color: #cccccc;
-  background-position: center;
-  background-repeat: repeat;
-  background-size: contain;
-  margin: 0px;
-  padding: 10px;
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Josefin+Slab&family=Open+Sans&family=Poppins&display=swap");
+* {
+  box-sizing: border-box;
+  font-size: 0.98em;
+  font-family: "Poppins", sans-serif;
+}
+
+@media (min-width: 541px) {
+  .main-div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(./images/fed1.png);
+    background-size: cover;
+    padding: 30px;
+    overflow: hidden;
+  }
+
+  .timer-div {
+    position: absolute;
+    top: 25%;
+    width: 60%;
+    left: -25%;
+    min-width: 40em;
+  }
+
+  .data-div {
+    position: absolute;
+    bottom: 5%;
+    width: 40%;
+    right: -10%;
+  }
+
+  .timer-div .paperContainer,
+  .timer-div .timerContainer {
+    padding-left: 45%;
+    padding-right: 2%;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+
+  .data-div .paperContainer {
+    padding-right: 37%;
+    padding-left: 4%;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+
+  .timer-div .paperContainer p {
+    text-align: right;
+  }
+
+  .MuiButton-label {
+    text-align: right;
+  }
+
+  .data-div .paperContainer p {
+    text-align: left;
+  }
+
+  .title {
+    font-family: "Josefin Slab", serif;
+    font-size: 1.6em;
+    font-weight: bolder;
+  }
+
+  .timer-div .title {
+    font-weight: bolder;
+  }
+}
+
+@media (max-width: 540px) {
+  * {
+    font-size: 1em;
+  }
+
+  .main-div {
+    position: absolute;
+    background-image: url(./images/fed1.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  .timer-div {
+    position: relative;
+    width: 100%;
+  }
+
+  .data-div {
+    position: relative;
+    width: 100%;
+  }
+
+  .timer-div .paperContainer,
+  .data-div .paperContainer,
+  .timer-div .timerContainer {
+    width: 100%;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+
+  .title {
+    font-family: "Josefin Slab", serif;
+    font-size: 1.6em;
+    font-weight: bolder;
+  }
+
+  .timer-div .title {
+    font-weight: bolder;
+  }
 }

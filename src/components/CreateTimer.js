@@ -12,7 +12,7 @@ const CreateTimer = (props) => {
   } = useInput("");
 
   return (
-    <Paper elevation={3} className="paperContainer">
+    <Paper className="paperContainer">
       <TextField
         className="textField"
         onKeyPress={(press) => {
@@ -21,7 +21,9 @@ const CreateTimer = (props) => {
             resetRoomCode();
           }
         }}
+        id="outlined-textarea"
         label="Inserisci il codice della stanza"
+        placeholder="Ad esempio: Compito di latino"
         {...bindRoomCode}
       />
       {/*TODO <CircularProgress />*/}

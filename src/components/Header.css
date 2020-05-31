@@ -1,22 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Josefin+Slab&family=Open+Sans&display=swap");
+
 .gridContainer {
+  width: 100%;
   padding: 10px;
 }
 
-.logoAndTitle {
-  display: flex;
-  flex-direction: row;
+.icons {
+  display: inline-flex;
+  justify-content: space-evenly;
+  width: 10%;
 }
 
-.appIcon {
+.icon {
   color: white;
-  margin-right: 10px;
-}
-
-.settingsIcon {
-  color: white;
+  margin-right: 20%;
 }
 
 .appTitle {
   color: white;
   width: fit-content;
+  margin-top: -0.5em;
+  font-size: 2em;
+  /* font-family: "Gloria Hallelujah", cursive; */
+  font-family: "Fredericka the Great", cursive;
 }

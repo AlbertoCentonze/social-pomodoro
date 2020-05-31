@@ -11,11 +11,12 @@ const Header = (props) => {
       container
       direction="row"
       justify="space-between"
-      alignItems="center"
     >
-      <TimerIcon className="appIcon" color="default" fontSize="larger" />
       <p className="appTitle">PomoFocus</p>
-      <SettingsIcon className="settingsIcon" />
+      <div className="icons">
+        <TimerIcon className="icon" color="default" fontSize="larger" />
+        <SettingsIcon className="icon" />
+      </div>
     </Grid>
   );
 };

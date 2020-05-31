@@ -6,6 +6,10 @@ import PauseIcon from "@material-ui/icons/Pause";
 import { usePomodoro } from "../hooks/usePomodoro";
 import { socket } from "../services/socket.js";
 import "./Timer.css";
+import UIfx from "uifx";
+import alarm from "../audio/piano2.wav";
+
+const piano = new UIfx(alarm, { volume: 1 });
 
 const Timer = (props) => {
   const [seconds, minutes, setTime, active, setActive, timerMode] = usePomodoro(
@@ -28,17 +32,18 @@ const Timer = (props) => {
 
   useEffect(() => {
     if (minutes === "00" && seconds === "00") {
+      piano.play();
       socket.close();
       socket.connect();
     }
-    socket.on(props.channel, ({ active, duration }) => {
+    socket.once(props.channel, ({ active, duration }) => {
       setActive(active);
       setTime(duration);
     });
   });
 
   return (
-    <Paper elevation={3} className="TimerContainer">
+    <Paper elevation={3} className="timerContainer">
       <ButtonGroup variant="contained" color="primary">
         <Button
           onClick={() => {
