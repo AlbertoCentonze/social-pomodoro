@@ -52,11 +52,11 @@ function App() {
         <Grid className="container data" container direction="column">
           <FlexiblePaperCard
             title="Ultime novità"
-            description="Nuova correzione per il timer in fase di testing, aggiunto anche un primo supporto ai timer recenti"
+            description="Nuova grafica totalmente rinnovata per gli utenti desktop. Migliorato il supporto ai timer recenti (ancora da migliorare). "
           />
           <FlexiblePaperCard
-            title="Problemi noti"
-            description="Purtroppo non è ancora disponibile un layout ottimizzato per i browser PC, ti invito ad utilizzare il cellulare finché non avrò risolto"
+            title="In programma"
+            description="Siamo già al lavoro per aggiungere dei timer con il supporto a durate personalizzate e un sistema di password per rendere le stanze private"
           />
           <FlexiblePaperCard
             title="Vuoi collaborare?"
