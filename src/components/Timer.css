@@ -1,11 +1,13 @@
-.TimerContainer {
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+.timerContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  width: 95%;
+  width: 100%;
   margin-top: 5px;
   margin-bottom: 5px;
+  border-radius: 10px;
 }
 
 .timerButtonsContainer {
@@ -16,14 +18,14 @@
 }
 
 .timeText {
-  margin-top: 3px;
-  margin-bottom: 5%;
+  margin-top: -40px;
+  margin-bottom: -10px;
   font-weight: bold;
-  font-size: 200%;
+  font-size: 5em;
+  font-family: "Pacifico", cursive;
 }
 
 .roomText {
-  margin-top: 3px;
-  margin-bottom: 5%;
-  font-size: 200%;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }

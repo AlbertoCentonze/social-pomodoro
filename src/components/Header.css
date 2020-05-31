@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Josefin+Slab&family=Open+Sans&display=swap");
+
 .gridContainer {
   width: 100%;
   padding: 10px;
@@ -12,7 +13,7 @@
 
 .icon {
   color: white;
-  margin-right: 2%;
+  margin-right: 20%;
 }
 
 .appTitle {

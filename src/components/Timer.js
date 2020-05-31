@@ -1,10 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  Button,
-  Grid,
-  ButtonGroup,
-  Paper,
-} from "@material-ui/core";
+import { Button, Grid, ButtonGroup, Paper } from "@material-ui/core";
 import RestoreIcon from "@material-ui/icons/Restore";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
@@ -48,7 +43,7 @@ const Timer = (props) => {
   });
 
   return (
-    <Paper elevation={3} className="TimerContainer">
+    <Paper elevation={3} className="timerContainer">
       <ButtonGroup variant="contained" color="primary">
         <Button
           onClick={() => {
