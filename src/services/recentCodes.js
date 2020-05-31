@@ -31,6 +31,18 @@ export const resetRecentCodes = () => {
   localStorage.setItem("recent-codes", "");
 };
 
+export const setReloadCode = (code) => {
+  localStorage.setItem("reload-code", code);
+};
+
+export const resetReloadCode = () => {
+  localStorage.setItem("reload-code", undefined);
+};
+
+export const getReloadCode = () => {
+  return localStorage.getItem("reload-code");
+};
+
 function arrayMove(arr, fromIndex, toIndex) {
   var element = arr[fromIndex];
   arr.splice(fromIndex, 1);
@@ -39,6 +51,8 @@ function arrayMove(arr, fromIndex, toIndex) {
 
 function arrayToString(arr) {
   let string = "";
-  arr.forEach((code) => {string += code + "-"});
-  return string
+  arr.forEach((code) => {
+    string += code + "-";
+  });
+  return string;
 }

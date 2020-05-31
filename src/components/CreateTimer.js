@@ -23,10 +23,9 @@ const CreateTimer = (props) => {
         }}
         id="outlined-textarea"
         label="Inserisci il codice della stanza"
-        placeholder="Ad esempio: ompito di latino"
+        placeholder="Ad esempio: latino"
         {...bindRoomCode}
       />
-      {/*TODO <CircularProgress />*/}
     </Paper>
   );
 };

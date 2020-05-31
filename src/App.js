@@ -8,19 +8,20 @@ import FlexiblePaperCard from "./components/FlexiblePaperCard";
 import { setRecentCodes } from "./services/recentCodes";
 import "./App.css";
 import RecentCodes from "./components/RecentCodes";
+import TimerModal from "./components/TimerModal";
 
 function App() {
   const [timer, setTimer] = useState();
   const [connected, setConnected] = useState(false);
+  const [modal, setModal] = useState(false);
 
   const newTimerHandler = (newTimerId) => {
+    socket.off(timer);
     let timerId = newTimerId.toUpperCase();
     socket.emit("addTimer", { id: timerId });
     setRecentCodes(timerId);
     setTimer(timerId);
   };
-
-  //TODO DELETE THE PREVIOUS TIMER? check the hook
 
   useEffect(() => {
     socket.on("connection", (data) => setConnected(data));
@@ -29,6 +30,8 @@ function App() {
   //const mobile = (
   return (
     <div className="main-div">
+      <TimerModal open={modal} />
+      {/* TODO add description, explaination and style it */}
       <Header className="header" />
       <div className="data-div">
         <Grid className="container data" container direction="column">
