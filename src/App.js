@@ -48,7 +48,7 @@ function App() {
           <CreateTimer connected={connected} roomCreator={newTimerHandler} />
         </Grid>
       </div>
-      <div className={`data-div ${"hide"}`}>
+      <div className={timer === undefined ? "data-div" : `data-div ${"hide"}`}>
         <Grid container direction="column">
           <FlexiblePaperCard
             title="Ultime novità"
