@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Timer from "./components/Timer";
 import Header from "./components/Header";
 import { socket } from "./services/socket";
@@ -12,20 +12,18 @@ import "./App.css";
 
 function App() {
   const [timer, setTimer] = useState();
-  const [connected, setConnected] = useState(false);
   const [modal, setModal] = useState(false);
 
   const newTimerHandler = (newTimerId) => {
     socket.off(timer);
     let timerId = newTimerId.toLowerCase();
-    socket.emit("addTimer", { id: timerId });
+    socket.emit("add", {
+      id: timerId,
+      cycles: { pomodoro: 1500, shortBreak: 300, longBreak: 600 },
+    });
     setRecentCodes(timerId);
     setTimer(timerId);
   };
-
-  useEffect(() => {
-    socket.on("connection", (data) => setConnected(data));
-  });
 
   return (
     <div className="main-div">
@@ -45,7 +43,7 @@ function App() {
             <Timer channel={timer} />
           )}
           <RecentCodes onRecentClick={newTimerHandler} />
-          <CreateTimer connected={connected} roomCreator={newTimerHandler} />
+          <CreateTimer roomCreator={newTimerHandler} />
         </Grid>
       </div>
       <div className="data-div">

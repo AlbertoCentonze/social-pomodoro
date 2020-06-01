@@ -1,6 +1,6 @@
 import React from "react";
 import { getRecentCodes, resetRecentCodes } from "../services/recentCodes";
-import { Paper, Button, Typography } from "@material-ui/core";
+import { Paper, Button } from "@material-ui/core";
 import "./FlexiblePaperCard.css";
 
 const RecentCodes = (props) => {

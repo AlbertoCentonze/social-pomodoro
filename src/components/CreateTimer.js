@@ -16,7 +16,7 @@ const CreateTimer = (props) => {
       <TextField
         className="textField"
         onKeyPress={(press) => {
-          if (press.key === "Enter" && props.connected) {
+          if (press.key === "Enter") {
             props.roomCreator(roomCode);
             resetRoomCode();
           }
