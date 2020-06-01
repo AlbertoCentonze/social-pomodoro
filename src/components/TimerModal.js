@@ -5,8 +5,8 @@ import "../App.css";
 
 const TimerModal = (props) => {
   return (
-    <Modal open={props.open}>
-      <CreateTimer className="modal" />
+    <Modal className="modal" open={props.open}>
+      <CreateTimer />
     </Modal>
   );
 };

@@ -42,14 +42,14 @@ function App() {
               description="Questo timer ti permette di studiare sfruttando i cicli di studio. Connettiti ad un timer utilizzando un codice a tuo piacimento e studia con i tuoi amici condividendolo"
             />
           ) : (
-            <Timer channel={timer} />
+            <Timer channel={timer} className="actual-timer" />
           )}
           <RecentCodes onRecentClick={newTimerHandler} />
           <CreateTimer connected={connected} roomCreator={newTimerHandler} />
         </Grid>
       </div>
-      <div className="data-div">
-        <Grid className="container data" container direction="column">
+      <div className={`data-div ${"hide"}`}>
+        <Grid container direction="column">
           <FlexiblePaperCard
             title="Ultime novità"
             description="Nuova grafica totalmente rinnovata per gli utenti desktop. Migliorato il supporto ai timer recenti (ancora da migliorare). "

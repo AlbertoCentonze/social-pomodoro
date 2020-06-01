@@ -24,11 +24,22 @@
     min-width: 40em;
   }
 
-  .data-div {
+  .data-div,
+  .data-div.hide:hover {
     position: absolute;
     bottom: 5%;
     width: 40%;
     right: -10%;
+    transform: translate(0);
+    transition: cubic-bezier(0.86, 0, 0.07, 1) 0.3s;
+  }
+
+  .data-div.hide {
+    transform: translate(72%);
+  }
+
+  .data-div.hide .paperContainer {
+    background-color: rgba(255, 255, 255, 0.4);
   }
 
   .timer-div .paperContainer,
@@ -39,11 +50,13 @@
     background-color: rgba(255, 255, 255, 0.95);
   }
 
-  .data-div .paperContainer {
+  .data-div .paperContainer,
+  .data-div.hide:hover .paperContainer {
     padding-right: 37%;
     padding-left: 4%;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.95);
+    transition: cubic-bezier(0.86, 0, 0.07, 1) 0.3s;
   }
 
   .timer-div .paperContainer p {
@@ -64,8 +77,12 @@
     font-weight: bolder;
   }
 
-  .timer-div .title {
+  .presentation-div .title {
     font-weight: bolder;
+  }
+
+  .modal {
+    align-content: center;
   }
 }
 
