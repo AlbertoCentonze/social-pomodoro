@@ -8,12 +8,25 @@ import FlexiblePaperCard from "./components/FlexiblePaperCard";
 import { setRecentCodes } from "./services/recentCodes";
 import RecentCodes from "./components/RecentCodes";
 import TimerModal from "./components/TimerModal";
+import { makeStyles } from "@material-ui/core/styles";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
 import "./App.css";
+
+const useStyles = makeStyles((theme) => ({
+  margin: {
+    margin: theme.spacing(1),
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1),
+  },
+}));
 
 function App() {
   const [timer, setTimer] = useState();
   const [connected, setConnected] = useState(false);
   const [modal, setModal] = useState(false);
+  const classes = useStyles();
 
   const newTimerHandler = (newTimerId) => {
     socket.off(timer);
@@ -42,7 +55,7 @@ function App() {
               description="Questo timer ti permette di studiare sfruttando i cicli di studio. Connettiti ad un timer utilizzando un codice a tuo piacimento e studia con i tuoi amici condividendolo"
             />
           ) : (
-            <Timer channel={timer} className="actual-timer" />
+            <Timer channel={timer} />
           )}
           <RecentCodes onRecentClick={newTimerHandler} />
           <CreateTimer connected={connected} roomCreator={newTimerHandler} />
@@ -64,6 +77,18 @@ function App() {
           />
         </Grid>
       </div>
+      <div className="fabb">
+        <Fab
+          size="large"
+          elevation={10}
+          color="secondary"
+          aria-label="add"
+          className="classes.margin"
+        >
+          <AddIcon />
+        </Fab>
+      </div>
+      <TimerModal open={modal} className="modal" />
     </div>
   );
 }

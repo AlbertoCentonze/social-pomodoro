@@ -8,27 +8,13 @@ import { socket } from "../services/socket.js";
 import "./Timer.css";
 import UIfx from "uifx";
 import alarm from "../audio/piano2.wav";
-import { makeStyles } from "@material-ui/core/styles";
 
 const piano = new UIfx(alarm, { volume: 1 });
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    "& > *": {
-      margin: theme.spacing(1),
-    },
-  },
-}));
 
 const Timer = (props) => {
   const [seconds, minutes, setTime, active, setActive, timerMode] = usePomodoro(
     1500
   );
-
-  const classes = useStyles();
 
   const resetHandler = () => {
     setActive(false);
@@ -58,11 +44,7 @@ const Timer = (props) => {
 
   return (
     <Paper className="timerContainer">
-      <ButtonGroup
-        variant="contained"
-        color="primary"
-        aria-label="outlined primary button group" //perchè non si applica?
-      >
+      <ButtonGroup variant="outlined">
         <Button
           onClick={() => {
             modeHandler("pomodoro");
@@ -105,8 +87,8 @@ const Timer = (props) => {
               mode: timerMode.current,
             });
           }}
-          variant="contained"
-          color="default"
+          variant="outlined"
+          color="primary"
           startIcon={<RestoreIcon />}
         >
           RESET
@@ -119,7 +101,7 @@ const Timer = (props) => {
               toReset: false,
             });
           }}
-          variant="contained"
+          variant="outlined"
           color={active ? "secondary" : "primary"}
           endIcon={active ? <PauseIcon /> : <PlayArrowIcon />}
         >

@@ -81,8 +81,20 @@
     font-weight: bolder;
   }
 
-  .modal {
-    align-content: center;
+  .modal .paperContainer {
+    width: 40%;
+    height: 15%;
+    position: absolute;
+    bottom: 3.7em;
+    right: 6em;
+    justify-content: center;
+    padding: 1em;
+  }
+
+  .fabb {
+    position: absolute;
+    bottom: 2em;
+    right: 4em;
   }
 }
 
@@ -127,5 +139,11 @@
 
   .timer-div .title {
     font-weight: bolder;
+  }
+
+  .fabb {
+    position: absolute;
+    bottom: 2em;
+    right: 2em;
   }
 }
